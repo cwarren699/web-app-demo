@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href ="styles.css">
+    <title>Picture from Space</title>
+</head>
+<body>
+    <main>
+        <h1>Astronomy Picture of the Day</h1>
+        <div>
+            <label for='date'>Enter date:</label>
+            <input type-='text' name='date' id='date'>
+            <input type="button" id="view_button" value='View'>
+        </div>
+        <div id='display'></div>
+        <div>
+            <label for='pic_button'>Tired of space?:</label>
+            <input type="button" id="pic_button" value='View'>
+        </div>
+        <div id='display2'></div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="apod.js"></script>
+</body>
+
+</html>

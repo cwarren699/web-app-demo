@@ -1,0 +1,60 @@
+<html>
+<div id="myBtn"><a href="">CLICK</a></div>
+    <head>Method 1</head>
+    <div id="output1"></div>
+    <script>
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function (data) {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                json = JSON.parse(xhr.responseText)
+                for (i = 0; i < json.length; i++) {
+                    document.getElementById("output1").appendChild(document.createElement("br"))
+                    document.getElementById("output1").append(json[i].title)
+                    document.getElementById("output1").appendChild(document.createElement("br"))
+                    document.getElementById("output1").append(json[i].body)
+                }
+            }
+        };
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);
+        xhr.send();
+    </script>
+    <br>
+    <head>Method 2</head>
+    <div id="output2"></div>
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/todos").then(response => {
+            return response.json();
+        }).then(json => {
+            for (i = 0; i < json.length; i++) {
+                document.getElementById("output2").appendChild(document.createElement("br"))
+                document.getElementById("output2").append(json[i].title)
+                document.getElementById("output2").appendChild(document.createElement("br"))
+                document.getElementById("output2").append(json[i].completed)
+            }
+        });
+    </script>
+    <br>
+    <head>Method 3</head>
+    <div id="output3"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/comments",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (key, value) {
+                        console.log(key);
+                        console.log(value);
+                        $("#output3").append(`<br>${value.name} :  ${value.email}<br>${value.body}`);
+                    })
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            })
+        })
+    </script>
+    <br>
+</html>
